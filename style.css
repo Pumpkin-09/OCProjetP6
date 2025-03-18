@@ -12,11 +12,8 @@ body {
 
 .baniere{
     padding: 6.25rem 6.25rem;
-    background: url("806-200x300.jpg");
+    background: url("logo.jpg");
     background-size: cover;
-    background-position: center;
-    width: 50%;
-    margin: auto;
 }
 
 p {
