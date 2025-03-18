@@ -1,5 +1,5 @@
 @media screen and (max-width: 768px) {
-  /* ... */
+
 }
 
 @media screen and (max-width: 480px) {
@@ -75,14 +75,14 @@ h1{
   padding: 1rem 1.5rem;
 }
 
-.categorie_film{
+.categorie_film_1, .categorie_film_2, .categorie_film_3, .categorie_film_4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 2rem;
 }
  
-.image_film {
+.film_0, .film_1, .film_2, .film_3, .film_4, .film_5 {
     position: relative;
     flex-basis: calc(25% - 1.25rem);
     flex-grow: 1;
@@ -90,7 +90,7 @@ h1{
     overflow: hidden;
   }
 
-.image_film img {
+  .film_0 img, .film_1 img, .film_2 img, .film_3 img, .film_4 img, .film_5 img {
     display: block;
     width: 100%;
     height: auto;
