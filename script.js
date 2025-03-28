@@ -1,3 +1,37 @@
+
+
+function affichageInfoFilms(urlCategorie,baliseCategorie){
+    fetch(urlCategorie)
+    .then(response => response.json())
+    .then(dataFilms =>{
+        dataFilms.results.forEach((film, index) => {
+            const url_film = film.url;
+
+        fetch(url_film)
+            .then(response => response.json())
+            .then(dataFilm => {
+                document.querySelector(`${baliseCategorie} .film_${index} img`).src = dataFilm.image_url;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film h2`).textContent = dataFilm.title;
+                
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.titre = dataFilm.title;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.genre = dataFilm.genres;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.date_sortie = dataFilm.date_published;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.classification = dataFilm.rated;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.imdb = dataFilm.imdb_score;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.realisateur = dataFilm.directors;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.acteurs = dataFilm.actors;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.duree = dataFilm.duration;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.pays = dataFilm.countries;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.recettes = dataFilm.worldwide_gross_income;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.resume = dataFilm.long_description;
+                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.image = dataFilm.image_url;
+            })
+            
+        })
+    })
+}
+
+
 document.addEventListener('DOMContentLoaded', function(){
     fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes&page_size=1')
         .then(response => response.json())
@@ -10,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function(){
             document.querySelector('.meilleur_film .element1 h2').textContent = dataFilm.title;
             document.querySelector('.meilleur_film .element2 img').src = dataFilm.image_url;
             document.querySelector('.meilleur_film .element3 p').textContent = dataFilm.description;
+
         })
     
         fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=7')
@@ -37,36 +72,23 @@ document.addEventListener('DOMContentLoaded', function(){
             })
         })
     })
-    fetch('http://localhost:8000/api/v1/titles/?genre=horror&sort_by=-imdb_score&page_size=6')
-        .then(response => response.json())
-        .then(dataFilmsHorror =>{
-            dataFilmsHorror.results.forEach((film, index) => {
-                const url_horror_film = film.url;
+    affichageInfoFilms('http://localhost:8000/api/v1/titles/?genre=horror&sort_by=-imdb_score&page_size=6', '.categorie_film_2')
+    affichageInfoFilms('http://localhost:8000/api/v1/titles/?genre=Comedy&sort_by=-imdb_score&page_size=6', '.categorie_film_3')
 
-            fetch(url_horror_film)
-                .then(response => response.json())
-                .then(dataFilmHorror => {
-                    document.querySelector(`.categorie_film_2 .film_${index} img`).src = dataFilmHorror.image_url
-                    document.querySelector(`.categorie_film_2 .film_${index} .info_film h2`).textContent = dataFilmHorror.title
-                })
-            })
-        })
-    fetch('http://localhost:8000/api/v1/titles/?genre=Comedy&sort_by=-imdb_score&page_size=6')
-    .then(response => response.json())
-    .then(dataFilmsHorror =>{
-        dataFilmsHorror.results.forEach((film, index) => {
-            const url_horror_film = film.url;
 
-        fetch(url_horror_film)
-            .then(response => response.json())
-            .then(dataFilmHorror => {
-                document.querySelector(`.categorie_film_3 .film_${index} img`).src = dataFilmHorror.image_url
-                document.querySelector(`.categorie_film_3 .film_${index} .info_film h2`).textContent = dataFilmHorror.title
-            })
-        })
-    })
 
 })
 
+const modalConteneur = document.querySelector('.modale-conteneur');
+const modaleTrigers = document.querySelectorAll('.modale-trygger');
+modaleTrigers.forEach(trigger => trigger.addEventListener("click", toggleModale))
+
+function toggleModale(){
+    modalConteneur.classList.toggle("active")
+}
 
 
+
+
+
+"http://localhost:8000/api/v1/genres/?page_size=30"
