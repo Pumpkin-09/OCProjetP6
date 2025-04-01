@@ -13,20 +13,19 @@ function affichageInfoFilms(urlCategorie,baliseCategorie){
                 document.querySelector(`${baliseCategorie} .film_${index} img`).src = dataFilm.image_url;
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film h2`).textContent = dataFilm.title;
                 
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.titre = dataFilm.title;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.genre = dataFilm.genres;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.date_sortie = dataFilm.date_published;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.classification = dataFilm.rated;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.imdb = dataFilm.imdb_score;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.realisateur = dataFilm.directors;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.acteurs = dataFilm.actors;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.duree = dataFilm.duration;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.pays = dataFilm.countries;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.recettes = dataFilm.worldwide_gross_income;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.resume = dataFilm.long_description;
-                document.querySelector(`${baliseCategorie} .film_${index} button`).dataset.image = dataFilm.image_url;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-titre`).textContent = dataFilm.title;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-genre`).textContent = dataFilm.genres;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-date-sortie`).textContent = dataFilm.date_published;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-classification`).textContent = dataFilm.rated;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-score`).textContent = dataFilm.imdb_score;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-realisateur`).textContent = dataFilm.directors;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-acteurs`).textContent = dataFilm.actors;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-duree`).textContent = dataFilm.duration;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-pays`).textContent = dataFilm.countries;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-recettes`).textContent = dataFilm.worldwide_gross_income;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-description`).textContent = dataFilm.long_description;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale img`).src = dataFilm.image_url;
             })
-            
         })
     })
 }
@@ -77,15 +76,20 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
-})
 
-const modalConteneur = document.querySelector('.modale-conteneur');
-const modaleTrigers = document.querySelectorAll('.modale-trygger');
-modaleTrigers.forEach(trigger => trigger.addEventListener("click", toggleModale))
+document.querySelectorAll('.bouton_1').forEach(button => {
+    button.addEventListener('click', () => {
+        const modalConteneur = button.parentElement.querySelector('.modale-conteneur');
+        modalConteneur.classList.add('active');
+        const fermerModale = modalConteneur.querySelector('.fermer-modale');
+        fermerModale.addEventListener('click', () => {
+            modalConteneur.classList.remove('active');
+        });
+    });
+});
+});
 
-function toggleModale(){
-    modalConteneur.classList.toggle("active")
-}
+
 
 
 

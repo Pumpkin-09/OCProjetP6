@@ -123,7 +123,7 @@ h1{
     font-size: 1.2em;
   }
   
-.bouton {
+.bouton_1, .bouton {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     border: none;
@@ -134,11 +134,11 @@ h1{
     cursor: pointer;
   }
 
-.bouton:hover {
+.bouton_1:hover, .bouton_1:hover {
   background-color: rgb(50, 50, 50);
   }
 
-.bouton:active {
+.bouton_1:active, .bouton:active {
   background-color: rgb(80, 80, 80);
   }
 
@@ -154,7 +154,7 @@ h1{
   display: block;
 }
 
-.overlay {
+.modale-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -174,7 +174,7 @@ h1{
   transform: translate(-50%, -50%);
 }
 
-.fermerModal {
+.fermer-modale {
   padding: 8px 10px;
   border: none;
   border-radius: 5px;
@@ -186,3 +186,4 @@ h1{
   background: #ff365e;
   color: #fff;
 }
+
