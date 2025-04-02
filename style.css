@@ -24,6 +24,7 @@ p {
 
 h1{
   font-size: 3em;
+  margin-left: 5rem;
 }
 
 .meilleur_film{
@@ -33,6 +34,8 @@ h1{
   border: 3px solid rgb(0, 0, 0);
   align-items: center;
   justify-content: center;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 
 .element1{
@@ -85,7 +88,9 @@ h1{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 2rem;
+  gap: 5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
  
 .film_0, .film_1, .film_2, .film_3, .film_4, .film_5 {
