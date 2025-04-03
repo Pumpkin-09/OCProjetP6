@@ -59,6 +59,19 @@ document.addEventListener('DOMContentLoaded', function(){
             document.querySelector('.meilleur_film .element2 img').src = dataFilm.image_url;
             document.querySelector('.meilleur_film .element3 p').textContent = dataFilm.description;
 
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-titre`).textContent = dataFilm.title;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-genre`).textContent = dataFilm.genres;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-date-sortie`).textContent = dataFilm.date_published;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-classification`).textContent = dataFilm.rated;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-score`).textContent = dataFilm.imdb_score;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-realisateur`).textContent = dataFilm.directors;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-acteurs`).textContent = dataFilm.actors;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-duree`).textContent = dataFilm.duration;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-pays`).textContent = dataFilm.countries;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-recettes`).textContent = dataFilm.worldwide_gross_income;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-description`).textContent = dataFilm.long_description;
+            document.querySelector(`.meilleur_film .modale-conteneur .modale img`).src = dataFilm.image_url;
+
         })
     
         fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=7')
@@ -106,9 +119,18 @@ document.addEventListener('DOMContentLoaded', function(){
     affichageInfoFilms('http://localhost:8000/api/v1/titles/?genre=Comedy&sort_by=-imdb_score&page_size=6', '.categorie_film_3')
     choixCategorie('http://localhost:8000/api/v1/genres/?page_size=40')
 
+    let baliseNom = document.getElementById('choixCategorie')
+    baliseNom.selectedIndex = 0;
+    const nomPremierElement = baliseNom.value
+    affichageInfoFilms(`http://localhost:8000/api/v1/titles/?genre=${nomPremierElement}&page_size=6`, '.categorie_film_4')
+
+    baliseNom.addEventListener('change', () =>{
+        const nom = baliseNom.value
+        affichageInfoFilms(`http://localhost:8000/api/v1/titles/?genre=${nom}&page_size=6`, '.categorie_film_4');
+    })
 
 
-    document.querySelectorAll('.bouton_1').forEach(button => {
+    document.querySelectorAll('.bouton_1, #element4').forEach(button => {
         button.addEventListener('click', () => {
             const modalConteneur = button.parentElement.querySelector('.modale-conteneur');
             modalConteneur.classList.add('active');
