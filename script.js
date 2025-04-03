@@ -15,14 +15,14 @@ function affichageInfoFilms(urlCategorie,baliseCategorie){
                 
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-titre`).textContent = dataFilm.title;
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-genre`).textContent = dataFilm.genres;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-date-sortie`).textContent = dataFilm.date_published;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-date-sortie`).textContent = dataFilm.date_published.substring(0, 4);
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-classification`).textContent = dataFilm.rated;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-score`).textContent = dataFilm.imdb_score;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-score`).textContent = `IMDB score: ${dataFilm.imdb_score}/10`;
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-realisateur`).textContent = dataFilm.directors;
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-acteurs`).textContent = dataFilm.actors;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-duree`).textContent = dataFilm.duration;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-duree`).textContent = `${dataFilm.duration} minutes`;
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-pays`).textContent = dataFilm.countries;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-recettes`).textContent = dataFilm.worldwide_gross_income;
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-recettes`).textContent = `Recettes au box-office: $${dataFilm.worldwide_gross_income}m`;
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-description`).textContent = dataFilm.long_description;
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale img`).src = dataFilm.image_url;
             })

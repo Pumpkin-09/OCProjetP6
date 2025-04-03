@@ -151,8 +151,10 @@ h1{
   display: none;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 1000;
 }
 
 .modale-conteneur.active {
@@ -160,23 +162,31 @@ h1{
 }
 
 .modale-overlay {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: #333333d3;
 }
 
 .modale {
+  border: 3px solid rgb(0, 0, 0);
   width: 95%;
-  max-width: 500px;
-  min-width: 300px;
-  padding: 30px;
+  max-width: 800px;
+  min-width: 500px;
+  padding: 15px;
   background: #fff;
+  color: #000;
   border-radius: 5px;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 1fr;
+  grid-template-rows: auto auto auto auto auto auto auto auto auto;
+  grid-gap: 5px;
 }
 
 .fermer-modale {
@@ -192,3 +202,90 @@ h1{
   color: #fff;
 }
 
+.titre-et-menu{
+  display: flex;
+  align-items: center;
+}
+
+.titre-et-menu h1 {
+  margin-top: 2rem;
+  margin-right: 3rem;
+}
+
+.modale img {
+  grid-column: 3 / 4;
+  grid-row: 1 / 7;
+  justify-self: end;
+  display: block;
+  width: 70%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1.45;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+.modale h2 {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-date-sortie {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-genre {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-classification {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-duree {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-score {
+  grid-column: 1 / 3;
+  grid-row: 4 / 5;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-recettes {
+  grid-column: 1 / 3;
+  grid-row: 5 / 6;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-realisateur {
+  grid-column: 1 / 3;
+  grid-row: 6 / 7;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-description {
+  grid-column: 1 / 4;
+  grid-row: 7 / 8;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-acteurs {
+  grid-column: 1 / 4;
+  grid-row: 8 / 9;
+  border: 3px solid rgb(0, 0, 0);
+}
+
+#modale-pays {
+  grid-column: 1 / 4;
+  grid-row: 9 / 10;
+  border: 3px solid rgb(0, 0, 0);
+}
