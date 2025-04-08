@@ -14,16 +14,56 @@ function affichageInfoFilms(urlCategorie,baliseCategorie){
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film h2`).textContent = dataFilm.title;
                 
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-titre`).textContent = dataFilm.title;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-genre`).textContent = dataFilm.genres;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-date-sortie`).textContent = dataFilm.date_published.substring(0, 4);
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-classification`).textContent = dataFilm.rated;
+
+                const datadate = dataFilm.date_published.substring(0, 4)
+                let listeGenre = dataFilm.genres
+                const dataGenre = listeGenre.join(", ")
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-date-sortie-genre`).textContent = `${datadate} - ${dataGenre}`;
+
+                const dataClassification = dataFilm.rated
+                const dataDuree = dataFilm.duration
+                let listePays = dataFilm.countries
+                let dataPays;
+                if (listePays.length > 1) {
+                    dataPays = listePays.join(" / ")
+                }
+                else {
+                    dataPays = listePays[0]
+                }
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-classification-duree-pays`).textContent =`${dataClassification} - ${dataDuree} minutes (${dataPays})`;
+
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-score`).textContent = `IMDB score: ${dataFilm.imdb_score}/10`;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-realisateur`).textContent = dataFilm.directors;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-acteurs`).textContent = dataFilm.actors;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-duree`).textContent = `${dataFilm.duration} minutes`;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-pays`).textContent = dataFilm.countries;
-                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-recettes`).textContent = `Recettes au box-office: $${dataFilm.worldwide_gross_income}m`;
+
+                const recette = dataFilm.worldwide_gross_income
+                let dataRecettes;
+                if (recette !== null){
+                    dataRecettes = `Recettes au box-office: $${recette}m`
+                }
+                else {
+                    dataRecettes = 'Recettes au box-office: inconnu'
+                }
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-recettes`).textContent = dataRecettes;
+
+                let listeRealisateur = dataFilm.directors
+                let dataRealisateurs;
+                if (listeRealisateur.length > 1) {
+                    dataRealisateurs = listeRealisateur.join(", ")
+                }
+                else {
+                    dataRealisateurs = listeRealisateur
+                }
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-realisateur`).textContent = dataRealisateurs;
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-description`).textContent = dataFilm.long_description;
+
+                let listeActeurs = dataFilm.actors
+                let dataActeurs;
+                if (listeActeurs.length > 1) {
+                    dataActeurs = listeActeurs.join(", ")
+                }
+                else {
+                    dataActeurs = listeActeurs
+                }
+                document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale #modale-acteurs`).textContent = dataActeurs;
                 document.querySelector(`${baliseCategorie} .film_${index} .info_film .modale-conteneur .modale img`).src = dataFilm.image_url;
             })
         })
@@ -59,18 +99,58 @@ document.addEventListener('DOMContentLoaded', function(){
             document.querySelector('.meilleur_film .element2 img').src = dataFilm.image_url;
             document.querySelector('.meilleur_film .element3 p').textContent = dataFilm.description;
 
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-titre`).textContent = dataFilm.title;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-genre`).textContent = dataFilm.genres;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-date-sortie`).textContent = dataFilm.date_published;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-classification`).textContent = dataFilm.rated;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-score`).textContent = dataFilm.imdb_score;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-realisateur`).textContent = dataFilm.directors;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-acteurs`).textContent = dataFilm.actors;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-duree`).textContent = dataFilm.duration;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-pays`).textContent = dataFilm.countries;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-recettes`).textContent = dataFilm.worldwide_gross_income;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale #modale-description`).textContent = dataFilm.long_description;
-            document.querySelector(`.meilleur_film .modale-conteneur .modale img`).src = dataFilm.image_url;
+            document.querySelector('.meilleur_film .modale-conteneur .modale #modale-titre').textContent = dataFilm.title;
+
+            const datadate = dataFilm.date_published.substring(0, 4)
+            let listeGenre = dataFilm.genres
+            const dataGenre = listeGenre.join(", ")
+            document.querySelector('.meilleur_film .modale-conteneur .modale #modale-date-sortie-genre').textContent = `${datadate} - ${dataGenre}`;
+
+            const dataClassification = dataFilm.rated
+            const dataDuree = dataFilm.duration
+            let listePays = dataFilm.countries
+            let dataPays;
+            if (listePays.length > 1) {
+                dataPays = listePays.join(" / ")
+            }
+            else {
+                dataPays = listePays[0]
+            }
+            document.querySelector('.meilleur_film .modale-conteneur .modale #modale-classification-duree-pays').textContent =`${dataClassification} - ${dataDuree} minutes (${dataPays})`;
+
+            document.querySelector('.meilleur_film .modale-conteneur .modale #modale-score').textContent = `IMDB score: ${dataFilm.imdb_score}/10`;
+
+            const recette = dataFilm.worldwide_gross_income
+            let dataRecettes;
+            if (recette !== null){
+                dataRecettes = `Recettes au box-office: $${recette}m`
+            }
+            else {
+                dataRecettes = 'Recettes au box-office: inconnu'
+            }
+            document.querySelector('.meilleur_film .modale-conteneur .modale #modale-recettes').textContent = dataRecettes;
+
+            let listeRealisateur = dataFilm.directors
+            let dataRealisateurs;
+            if (listeRealisateur.length > 1) {
+                dataRealisateurs = listeRealisateur.join(", ")
+            }
+            else {
+                dataRealisateurs = listeRealisateur
+            }
+            document.querySelector('.meilleur_film .modale-conteneur .modale #modale-realisateur').textContent = dataRealisateurs;
+            document.querySelector('.meilleur_film .modale-conteneur .modale #modale-description').textContent = dataFilm.long_description;
+
+            let listeActeurs = dataFilm.actors
+            let dataActeurs;
+            if (listeActeurs.length > 1) {
+                dataActeurs = listeActeurs.join(", ")
+            }
+            else {
+                dataActeurs = listeActeurs
+            }
+            document.querySelector('.meilleur_film .modale-conteneur .modale #modale-acteurs').textContent = dataActeurs;
+            document.querySelector('.meilleur_film .modale-conteneur .modale img').src = dataFilm.image_url;
 
         })
     
@@ -92,16 +172,56 @@ document.addEventListener('DOMContentLoaded', function(){
                         document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film h2`).textContent = dataMeilleursFilms.title
 
                         document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-titre`).textContent = dataMeilleursFilms.title;
-                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-genre`).textContent = dataMeilleursFilms.genres;
-                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-date-sortie`).textContent = dataMeilleursFilms.date_published;
-                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-classification`).textContent = dataMeilleursFilms.rated;
-                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-score`).textContent = dataMeilleursFilms.imdb_score;
-                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-realisateur`).textContent = dataMeilleursFilms.directors;
-                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-acteurs`).textContent = dataMeilleursFilms.actors;
-                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-duree`).textContent = dataMeilleursFilms.duration;
-                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-pays`).textContent = dataMeilleursFilms.countries;
-                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-recettes`).textContent = dataMeilleursFilms.worldwide_gross_income;
+
+                        const datadate = dataMeilleursFilms.date_published.substring(0, 4)
+                        let listeGenre = dataMeilleursFilms.genres
+                        const dataGenre = listeGenre.join(", ")
+                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-date-sortie-genre`).textContent = `${datadate} - ${dataGenre}`;
+        
+                        const dataClassification = dataMeilleursFilms.rated
+                        const dataDuree = dataMeilleursFilms.duration
+                        let listePays = dataMeilleursFilms.countries
+                        let dataPays;
+                        if (listePays.length > 1) {
+                            dataPays = listePays.join(" / ")
+                        }
+                        else {
+                            dataPays = listePays[0]
+                        }
+                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-classification-duree-pays`).textContent =`${dataClassification} - ${dataDuree} minutes (${dataPays})`;
+        
+                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-score`).textContent = `IMDB score: ${dataMeilleursFilms.imdb_score}/10`;
+        
+                        const recette = dataMeilleursFilms.worldwide_gross_income
+                        let dataRecettes;
+                        if (recette !== null){
+                            dataRecettes = `Recettes au box-office: $${recette}m`
+                        }
+                        else {
+                            dataRecettes = 'Recettes au box-office: inconnu'
+                        }
+                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-recettes`).textContent = dataRecettes;
+        
+                        let listeRealisateur = dataMeilleursFilms.directors
+                        let dataRealisateurs;
+                        if (listeRealisateur.length > 1) {
+                            dataRealisateurs = listeRealisateur.join(", ")
+                        }
+                        else {
+                            dataRealisateurs = listeRealisateur
+                        }
+                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-realisateur`).textContent = dataRealisateurs;
                         document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-description`).textContent = dataMeilleursFilms.long_description;
+        
+                        let listeActeurs = dataMeilleursFilms.actors
+                        let dataActeurs;
+                        if (listeActeurs.length > 1) {
+                            dataActeurs = listeActeurs.join(", ")
+                        }
+                        else {
+                            dataActeurs = listeActeurs
+                        }
+                        document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale #modale-acteurs`).textContent = dataActeurs;
                         document.querySelector(`.categorie_film_1 .film_${index_balise} .info_film .modale-conteneur .modale img`).src = dataMeilleursFilms.image_url;
 
                         index_balise++

@@ -1,5 +1,5 @@
 @media screen and (max-width: 768px) {
-
+  /* ... */
 }
 
 @media screen and (max-width: 480px) {
@@ -11,15 +11,15 @@ body {
 }
 
 .baniere{
-    padding: 6.25rem 6.25rem;
-    background: url("logo.jpg");
-    background-size: cover;
+  padding: 6.25rem 6.25rem;
+  background: url("logo.jpg");
+  background-size: cover;
 }
 
 p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
-    text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  text-align: center;
 }
 
 h1{
@@ -94,12 +94,12 @@ h1{
 }
  
 .film_0, .film_1, .film_2, .film_3, .film_4, .film_5 {
-    position: relative;
-    flex-basis: calc(25% - 1.25rem);
-    flex-grow: 1;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
+  position: relative;
+  flex-basis: calc(25% - 1.25rem);
+  flex-grow: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
 .film_0 img, .film_1 img, .film_2 img, .film_3 img, .film_4 img, .film_5 img {
   display: block;
@@ -110,42 +110,52 @@ h1{
 }
   
 .info_film {
-    position: absolute;
-    top: 1.8rem;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: rgb(255, 255, 255);
-    padding: 0.6rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  position: absolute;
+  top: 1.8rem;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgb(255, 255, 255);
+  padding: 0.6rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
   
 .info_film h2 {
-    margin: 0;
-    font-size: 1.2em;
-  }
+  margin: 0;
+  font-size: 1.2em;
+}
   
 .bouton_1, .bouton {
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 1rem;
-    padding: 0.5rem 1rem;
-    font-size: 1em;
-    align-self: flex-end;
-    cursor: pointer;
-  }
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1em;
+  align-self: flex-end;
+  cursor: pointer;
+}
 
 .bouton_1:hover, .bouton_1:hover {
   background-color: rgb(50, 50, 50);
-  }
+}
 
 .bouton_1:active, .bouton:active {
   background-color: rgb(80, 80, 80);
-  }
+}
+
+.titre-et-menu{
+  display: flex;
+  align-items: center;
+}
+
+.titre-et-menu h1 {
+  margin-top: 2rem;
+  margin-right: 3rem;
+}
 
 .modale-conteneur {
   display: none;
@@ -176,116 +186,131 @@ h1{
   max-width: 800px;
   min-width: 500px;
   padding: 15px;
-  background: #fff;
   color: #000;
   border-radius: 5px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr 1fr;
-  grid-template-rows: auto auto auto auto auto auto auto auto auto;
-  grid-gap: 5px;
+  grid-template-columns: 1fr 250px;
+  grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto;
+  gap: 10px;
+  width: 80%;
+  max-width: 700px;
 }
 
-.fermer-modale {
-  padding: 8px 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  background: #ff365e;
-  color: #fff;
+#modale-titre {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.5em;
 }
 
-.titre-et-menu{
-  display: flex;
-  align-items: center;
+#modale-date-sortie-genre {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  text-align: left;
+  font-weight: bold;
 }
 
-.titre-et-menu h1 {
-  margin-top: 2rem;
-  margin-right: 3rem;
-}
-
-.modale img {
-  grid-column: 3 / 4;
-  grid-row: 1 / 7;
-  justify-self: end;
-  display: block;
-  width: 70%;
-  height: auto;
-  object-fit: cover;
-  aspect-ratio: 1 / 1.45;
-  border: 3px solid rgb(0, 0, 0);
-}
-
-.modale h2 {
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
-  border: 3px solid rgb(0, 0, 0);
-}
-
-#modale-date-sortie {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  border: 3px solid rgb(0, 0, 0);
-}
-
-#modale-genre {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  border: 3px solid rgb(0, 0, 0);
-}
-
-#modale-classification {
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
-  border: 3px solid rgb(0, 0, 0);
-}
-
-#modale-duree {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-  border: 3px solid rgb(0, 0, 0);
+#modale-classification-duree-pays {
+  grid-column: 1;
+  grid-row: 3;
+  margin: 0;
+  text-align: left;
+  font-weight: bold;
 }
 
 #modale-score {
-  grid-column: 1 / 3;
-  grid-row: 4 / 5;
-  border: 3px solid rgb(0, 0, 0);
+  grid-column: 1;
+  grid-row: 4;
+  margin: 0;
+  text-align: left;
+  font-weight: bold;
 }
 
 #modale-recettes {
-  grid-column: 1 / 3;
-  grid-row: 5 / 6;
-  border: 3px solid rgb(0, 0, 0);
+  grid-column: 1;
+  grid-row: 5;
+  margin: 0;
+  text-align: left;
+  font-weight: bold;
 }
 
 #modale-realisateur {
-  grid-column: 1 / 3;
-  grid-row: 6 / 7;
-  border: 3px solid rgb(0, 0, 0);
+  grid-column: 1;
+  grid-row: 6;
+  margin: 0;
+  text-align: left;
+}
+
+#modale-realisateur::before {
+  content: "Réalisé par:";
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modale img {
+  grid-column: 2;
+  grid-row: 1 / 7;
+  width: 115%;
+  height: auto;
+  object-fit: contain;
+  justify-self: end;
+  padding-right: 0;
+  margin-right: auto
 }
 
 #modale-description {
-  grid-column: 1 / 4;
-  grid-row: 7 / 8;
-  border: 3px solid rgb(0, 0, 0);
+  grid-column: 1 / 3;
+  grid-row: 7;
+  margin-top: 15px;
 }
 
 #modale-acteurs {
-  grid-column: 1 / 4;
-  grid-row: 8 / 9;
-  border: 3px solid rgb(0, 0, 0);
+  grid-column: 1 / 3;
+  grid-row: 8;
+  margin-top: 10px;
 }
 
-#modale-pays {
-  grid-column: 1 / 4;
-  grid-row: 9 / 10;
-  border: 3px solid rgb(0, 0, 0);
+#modale-acteurs::before {
+  content: "Avec:";
+  text-align: left;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.fermer-modale {
+  grid-column: 1 / 3;
+  grid-row: 9;
+  justify-self: center;
+  margin-top: 10px;
+  width: 120px;
+  height: 40px;
+  background-color: #ff0f0f;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  bottom: 20px;
+  text-transform: uppercase;
+}
+
+.fermer-modale:hover {
+  background-color: #aaa;
+}
+
+.modale-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5)
 }
