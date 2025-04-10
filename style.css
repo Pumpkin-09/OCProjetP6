@@ -1,19 +1,16 @@
-@media screen and (max-width: 768px) {
-  /* ... */
-}
 
-@media screen and (max-width: 480px) {
-  /* ... */
-}
 
 body {
   margin: 2.5rem;
 }
 
 .baniere{
-  padding: 6.25rem 6.25rem;
+  width: 100%;
+  padding: 6.25rem;
   background: url("logo.jpg");
-  background-size: cover;
+  background-size: contain;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
 }
 
 p {
@@ -87,15 +84,15 @@ h1{
 .categorie_film_1, .categorie_film_2, .categorie_film_3, .categorie_film_4 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 5rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  justify-content: center;
+  gap: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
  
 .film_0, .film_1, .film_2, .film_3, .film_4, .film_5 {
   position: relative;
-  flex-basis: calc(25% - 1.25rem);
+  flex-basis: calc(31%);
   flex-grow: 1;
   box-sizing: border-box;
   overflow: hidden;
@@ -258,12 +255,11 @@ h1{
 .modale img {
   grid-column: 2;
   grid-row: 1 / 7;
-  width: 115%;
+  width: 70%;
   height: auto;
   object-fit: contain;
   justify-self: end;
-  padding-right: 0;
-  margin-right: auto
+  aspect-ratio: auto
 }
 
 #modale-description {
@@ -313,4 +309,151 @@ h1{
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5)
+}
+
+@media screen and (min-width: 769px) {
+  .voir-plus-1, .voir-plus-2, .voir-plus-3, .voir-plus-4 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .baniere {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .meilleur_film {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 0.9em;
+  }
+
+  .element1, .element3, #element4 {
+    font-size: 1em;
+  }
+
+  #element4 {
+    margin-right: 2rem;
+}
+
+.categorie_film_1, .categorie_film_2, .categorie_film_3, .categorie_film_4 {
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.film_0, .film_1, .film_2, .film_3 {
+  flex-basis: calc(50% - 0.5rem);
+  flex-grow: 1;
+}
+
+.film_4, .film_5 {
+  display: none;
+}
+
+.bouton-conteneur {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.voir-plus-1, .voir-plus-2, .voir-plus-3, .voir-plus-4,
+.voir-moins-1, .voir-moins-2, .voir-moins-3, .voir-moins-4 {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 5rem;
+  width: fit-content;
+  background-color: #ff0f0f;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+}
+
+@media screen and (max-width: 480px) {
+  .baniere {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .meilleur_film {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid black;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    font-size: 0.8em;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    justify-content: flex-start;
+  }
+
+  .element2 {
+    order: -1;
+    margin: 0.5rem auto;
+    width: 98%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .element2 img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .element1 {
+    font-size: 2.5em;
+    margin-top: 0rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .element3 {
+    margin-top: 0rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  #element4 {
+    margin: 1rem auto;
+    text-align: center;
+    width: auto;
+    margin-bottom: 1rem;
+  }
+
+  .categorie_film_1, .categorie_film_2, .categorie_film_3, .categorie_film_4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .film_0, .film_1, .film_2, .film_3, .film_4, .film_5 {
+    position: relative;
+    flex-basis: calc(30% - 1.25rem);
+    flex-grow: 1;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
 }

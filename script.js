@@ -85,6 +85,45 @@ function choixCategorie(url){
             })})
 }
 
+function afficherCacherFilms(){
+    const voirPlusButtons = document.querySelectorAll('[class^="voir-plus-"]');
+    const voirMoinsButtons = document.querySelectorAll('[class^="voir-moins-"]');
+
+    voirPlusButtons.forEach(button =>{
+        button.addEventListener('click', function(){
+            const categorieClass = this.className.replace('voir-plus-', 'categorie_film_');
+            const categorie = document.querySelector('.' + categorieClass);
+            const filmsToReveal = categorie.querySelectorAll('.film_4, .film_5');
+            const voirMoinsButton = categorie.querySelector('.' + this.className.replace('plus', 'moins'));
+
+            filmsToReveal.forEach(film => {
+                film.style.display = 'block';
+            });
+            this.style.display = 'none';
+            if (voirMoinsButton) {
+                voirMoinsButton.style.display = 'block';
+            }
+        });
+    });
+
+    voirMoinsButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const categorieClass = this.className.replace('voir-moins-', 'categorie_film_');
+          const categorie = document.querySelector('.' + categorieClass);
+          const filmsToHide = categorie.querySelectorAll('.film_4, .film_5');
+          const voirPlusButton = categorie.querySelector('.' + this.className.replace('moins', 'plus'));
+
+          filmsToHide.forEach(film => {
+            film.style.display = 'none';
+          });
+          this.style.display = 'none';
+          if (voirPlusButton) {
+            voirPlusButton.style.display = 'block';
+          }
+        });
+      });
+}
+
 
 document.addEventListener('DOMContentLoaded', function(){
     fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes&page_size=1')
@@ -249,6 +288,7 @@ document.addEventListener('DOMContentLoaded', function(){
         affichageInfoFilms(`http://localhost:8000/api/v1/titles/?genre=${nom}&page_size=6`, '.categorie_film_4');
     })
 
+    afficherCacherFilms()
 
     document.querySelectorAll('.bouton_1, #element4').forEach(button => {
         button.addEventListener('click', () => {
