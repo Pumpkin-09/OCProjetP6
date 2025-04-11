@@ -375,9 +375,162 @@ h1{
   cursor: pointer;
   text-transform: uppercase;
 }
+
+.modale {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  gap: 15px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
+#modale-titre {
+  font-size: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.fermer-modale {
+  background: none;
+  color: red;
+  border: none;
+  padding: 0;
+  font-size: 2em;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: none;
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  justify-self: flex-end;
+}
+
+.fermer-modale::before {
+  content: "X";
+}
+
+.fermer-modale {
+  text-indent: -9999px;
+  overflow: hidden;
+  width: 2em;
+  height: 2em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fermer-modale::before {
+  display: block;
+  text-indent: 0;
+}
+
+#modale-date-sortie-genre,
+#modale-classification-duree-pays,
+#modale-score,
+#modale-recettes,
+#modale-realisateur,
+#modale-acteurs {
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.modale img {
+  width: 80%;
+  height: auto;
+  order: 3;
+  align-self: center;
+  margin-bottom: 15px;
+  grid-column: auto;
+  grid-row: auto;
+}
+
+#modale-description {
+  order: 2;
+  margin-top: 0;
+}
+
+#modale-acteurs {
+  order: 4;
+}
+}
+
+
 @media screen and (max-width: 480px) {
+  .modale {
+    width: 85%;
+    max-width: 85%;
+    min-width: unset;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    gap: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 0.85em;
+  }
+
+  #modale-titre {
+    font-size: 1.4em;
+    margin-bottom: 6px;
+  }
+
+  .fermer-modale {
+    background: none;
+    color: white;
+    border: none;
+    padding: 0;
+    font-size: 2em;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 2em;
+    height: 2em;
+    margin-top: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+
+  .fermer-modale::before {
+    content: "×";
+    color: red;
+    font-size: 1em;
+    text-indent: 0;
+  }
+
+  #modale-date-sortie-genre,
+  #modale-classification-duree-pays,
+  #modale-score,
+  #modale-recettes,
+  #modale-realisateur,
+  #modale-acteurs {
+    text-align: left;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  .modale img {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
   .baniere {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -449,11 +602,11 @@ h1{
   }
 
   .film_0, .film_1, .film_2, .film_3, .film_4, .film_5 {
+    width: 100%;
     position: relative;
-    flex-basis: calc(30% - 1.25rem);
+    flex-basis: calc(90% - 1rem);
     flex-grow: 1;
     box-sizing: border-box;
     overflow: hidden;
   }
-
 }
