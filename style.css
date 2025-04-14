@@ -4,13 +4,34 @@ body {
   margin: 2.5rem;
 }
 
-.baniere{
+.baniere {
   width: 100%;
-  padding: 6.25rem;
-  background: url("logo.jpg");
-  background-size: contain;
+  padding: 1rem;
   box-sizing: border-box;
-  background-repeat: no-repeat;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  background-color: #61787F;
+}
+
+.logo-container {
+  width: 200px;
+  height: 160px;
+  margin-right: 1.5rem;
+}
+
+.logo-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.titre-baniere {
+  font-weight: normal;
+  color: white;
+  font-size: 4em;
+  margin: 1;
 }
 
 p {
@@ -21,7 +42,8 @@ p {
 
 h1{
   font-size: 3em;
-  margin-left: 5rem;
+  margin-left: 2rem;
+  text-align: left;
 }
 
 .meilleur_film{
@@ -31,8 +53,8 @@ h1{
   border: 3px solid rgb(0, 0, 0);
   align-items: center;
   justify-content: center;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .element1{
@@ -142,6 +164,11 @@ h1{
 
 .bouton_1:active, .bouton:active {
   background-color: rgb(80, 80, 80);
+}
+
+#choixCategorie{
+  font-size: 1.5em;
+  padding: 0.3rem 2rem;
 }
 
 .titre-et-menu{
@@ -311,6 +338,31 @@ h1{
   background-color: rgba(0, 0, 0, 0.5)
 }
 
+@media screen and (max-width: 1025px) {
+  .film_0, .film_1, .film_2, .film_3, .film_4, .film_5 {
+  position: relative;
+  flex-basis: calc(30%);
+  flex-grow: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+}
+
+@media screen and (max-width: 904px) {
+  .titre-baniere {
+    font-weight: normal;
+    color: white;
+    font-size: 2.8em;
+    margin: 0;
+  }
+    
+  .logo-container {
+    width: 200px;
+    height: 160px;
+    margin-right: 1rem;
+  }
+}
+
 @media screen and (min-width: 769px) {
   .voir-plus-1, .voir-plus-2, .voir-plus-3, .voir-plus-4 {
     display: none;
@@ -318,10 +370,6 @@ h1{
 }
 
 @media screen and (max-width: 768px) {
-  .baniere {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
 
   .meilleur_film {
     margin-left: 2rem;
@@ -463,8 +511,46 @@ h1{
 }
 }
 
+@media screen and (max-width: 705px) {
+
+  .titre-baniere {
+    display: none;
+  }
+
+  .baniere {
+    justify-content: center;
+  }
+}
 
 @media screen and (max-width: 480px) {
+
+  h1 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .titre-et-menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .titre-et-menu h1 {
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  #choixCategorie {
+    order: 1;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .modale {
     width: 85%;
     max-width: 85%;
@@ -529,13 +615,6 @@ h1{
   .modale img {
     width: 80%;
     margin-bottom: 10px;
-  }
-
-  .baniere {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 
   .meilleur_film {

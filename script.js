@@ -85,6 +85,43 @@ function choixCategorie(url){
             })})
 }
 
+
+function afficherModale() {
+    const boutonsOuverture = document.querySelectorAll('.bouton_1, #element4');
+    const filmImages = document.querySelectorAll('[class^="film_"] img'); // Sélectionne toutes les images des films
+  
+    function ouvrirModale(elementDeclencheur) {
+      const modalConteneur = elementDeclencheur.parentElement.querySelector('.modale-conteneur');
+      if (modalConteneur) {
+        modalConteneur.classList.add('active');
+        const fermerModale = modalConteneur.querySelector('.fermer-modale');
+        fermerModale.addEventListener('click', () => {
+          modalConteneur.classList.remove('active');
+        });
+        // Empêcher l'ajout multiple d'écouteurs (important si la fonction est appelée plusieurs fois)
+        fermerModale.removeEventListener('click', fermerModale.clickFermer); // Supprime l'ancien écouteur si il existe
+        fermerModale.clickFermer = () => {
+          modalConteneur.classList.remove('active');
+          fermerModale.removeEventListener('click', fermerModale.clickFermer); // Nettoie l'écouteur
+        };
+        fermerModale.addEventListener('click', fermerModale.clickFermer);
+      }
+    }
+  
+    boutonsOuverture.forEach(button => {
+      button.addEventListener('click', () => {
+        ouvrirModale(button);
+      });
+    });
+  
+    filmImages.forEach(image => {
+      image.addEventListener('click', () => {
+        ouvrirModale(image);
+      });
+    });
+}
+
+
 function afficherCacherFilms(){
     const voirPlusButtons = document.querySelectorAll('[class^="voir-plus-"]');
     const voirMoinsButtons = document.querySelectorAll('[class^="voir-moins-"]');
@@ -281,25 +318,16 @@ document.addEventListener('DOMContentLoaded', function(){
     let baliseNom = document.getElementById('choixCategorie')
     baliseNom.selectedIndex = 0;
     const nomPremierElement = baliseNom.value
-    affichageInfoFilms(`http://localhost:8000/api/v1/titles/?genre=${nomPremierElement}&page_size=6`, '.categorie_film_4')
+    affichageInfoFilms(`http://localhost:8000/api/v1/titles/?genre=${nomPremierElement}&sort_by=-imdb_score&page_size=6`, '.categorie_film_4')
 
     baliseNom.addEventListener('change', () =>{
         const nom = baliseNom.value
-        affichageInfoFilms(`http://localhost:8000/api/v1/titles/?genre=${nom}&page_size=6`, '.categorie_film_4');
+        affichageInfoFilms(`http://localhost:8000/api/v1/titles/?genre=${nom}&sort_by=-imdb_score&page_size=6`, '.categorie_film_4');
     })
 
+    afficherModale()
     afficherCacherFilms()
 
-    document.querySelectorAll('.bouton_1, #element4').forEach(button => {
-        button.addEventListener('click', () => {
-            const modalConteneur = button.parentElement.querySelector('.modale-conteneur');
-            modalConteneur.classList.add('active');
-            const fermerModale = modalConteneur.querySelector('.fermer-modale');
-            fermerModale.addEventListener('click', () => {
-                modalConteneur.classList.remove('active');
-            });
-        });
-    });
 });
 
 
