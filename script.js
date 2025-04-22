@@ -88,7 +88,7 @@ function choixCategorie(url){
 
 function afficherModale() {
     const boutonsOuverture = document.querySelectorAll('.bouton_1, #element4');
-    const filmImages = document.querySelectorAll('[class^="film_"] img'); // Sélectionne toutes les images des films
+    const filmImages = document.querySelectorAll('[class^="film_"] img');
   
     function ouvrirModale(elementDeclencheur) {
       const modalConteneur = elementDeclencheur.parentElement.querySelector('.modale-conteneur');
@@ -98,11 +98,11 @@ function afficherModale() {
         fermerModale.addEventListener('click', () => {
           modalConteneur.classList.remove('active');
         });
-        // Empêcher l'ajout multiple d'écouteurs (important si la fonction est appelée plusieurs fois)
-        fermerModale.removeEventListener('click', fermerModale.clickFermer); // Supprime l'ancien écouteur si il existe
+
+        fermerModale.removeEventListener('click', fermerModale.clickFermer);
         fermerModale.clickFermer = () => {
           modalConteneur.classList.remove('active');
-          fermerModale.removeEventListener('click', fermerModale.clickFermer); // Nettoie l'écouteur
+          fermerModale.removeEventListener('click', fermerModale.clickFermer);
         };
         fermerModale.addEventListener('click', fermerModale.clickFermer);
       }

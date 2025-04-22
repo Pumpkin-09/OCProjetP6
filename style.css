@@ -458,11 +458,15 @@ h1{
   width: auto;
   height: auto;
   margin-top: 0;
-  justify-self: flex-end;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .fermer-modale::before {
   content: "X";
+  display: block;
+  text-indent: 0;
 }
 
 .fermer-modale {
@@ -474,11 +478,6 @@ h1{
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.fermer-modale::before {
-  display: block;
-  text-indent: 0;
 }
 
 #modale-date-sortie-genre,
